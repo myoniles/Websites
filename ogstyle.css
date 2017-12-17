@@ -60,26 +60,49 @@ body{
 	float left;
 	padding: 5px 10px;
 	width: 75%;
+	height:100px;
+	max-height:100px;	
 	margin-left: auto;
 	margin-right: auto;
 	border: 3px solid #ff4060;
 	border-radius:10px;
 	margin-top: 10px;
-	overflow: auto;
+	overflow: hidden;
+	transition: 0.5s;
+	-webkit-transition: 0.5s;
 }
 
-.content h2{
+.content:hover {
+	height:auto;
+	min-height: 100px;
+	max-height: 800px;
+	vertical-align:center;
+	border: 3px solid #a3333d;
+
+}
+
+.content h2 {
 	color:#ff4060;
 	float:left;
-	padding-right: 20px;
-
+	width: 33.33%;
+	text-align:center;
+	word-wrap: break-word;
+	text-align:center;
+	padding-top:auto;
 }
 
-.content p{
+.content p {
 	float:left;
+	word-wrap: break-word;	
+	text-align:left;
+	width:66%;
+	transition: height 1s;
 }
 
-.content h6{
+
+.content h6 {
+	display:block;
 	color:#ff4060;
 	clear:left;
+	text-align:center;
 }
