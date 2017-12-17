@@ -84,7 +84,8 @@ body{
 .content h2 {
 	color:#ff4060;
 	float:left;
-	width: 33.33%;
+	width: 30%;
+	padding-right: 3%;
 	text-align:center;
 	word-wrap: break-word;
 	text-align:center;
