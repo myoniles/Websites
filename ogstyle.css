@@ -1,0 +1,85 @@
+/*
+ * black 	#584B53
+ * off- white 	#dfeae9
+ * main red	#ff4060
+ * dark red	#a3333d
+ * dirty red	#9D5C63 
+ */
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body{   
+	background-color: #dfeae9;
+
+}
+
+.nav {
+    overflow: hidden;
+    background-color: #ff4060;
+    margin: auto;
+    width: 75%;
+    border-radius:15px;
+    margin-bottom: 10px;
+}
+
+.nav a {
+    float: left;
+    display: block;
+    color: #584B53;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    width: 33.333%;
+    -webkit-transition: background 1s, color 1s;
+    transition: background 1s, color 1s;
+}
+
+.nav a:hover {
+    background-color: #a3333d;
+    color: #D6E3F8;
+}
+
+
+.heading {
+	background-color: #584B53;
+	color: #ff4060;
+	text-align: center;
+	padding: 20px 10px;
+	width: 75%;
+	margin: auto;
+	border-radius:25px;
+}
+
+
+
+.content {
+	float left;
+	padding: 5px 10px;
+	width: 75%;
+	margin-left: auto;
+	margin-right: auto;
+	border: 3px solid #ff4060;
+	border-radius:10px;
+	margin-top: 10px;
+	overflow: auto;
+}
+
+.content h2{
+	color:#ff4060;
+	float:left;
+	padding-right: 20px;
+
+}
+
+.content p{
+	float:left;
+}
+
+.content h6{
+	color:#ff4060;
+	clear:left;
+}
