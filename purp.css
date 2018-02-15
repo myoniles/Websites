@@ -1,18 +1,8 @@
-/*
- * black 	#584B53
- * off- white 	#dfeae9
- * main red	#ff4060
- * dark red	#a3333d
- * dirty red	#9D5C63 
- */
-
-
-
 * {
     box-sizing: border-box;
 }
 
-body{   
+body{
 	background-color: #2F242C;
 
 }
@@ -61,7 +51,7 @@ body{
 	padding: 5px 10px;
 	width: 75%;
 	height:100px;
-	max-height:100px;	
+	max-height:100px;
 	margin-left: auto;
 	margin-right: auto;
 	border: 3px solid #AE00F9;
@@ -95,7 +85,7 @@ body{
 
 .content p {
 	float:left;
-	word-wrap: break-word;	
+	word-wrap: break-word;
 	text-align:left;
 	width:66%;
 	transition: height 1s;
@@ -107,4 +97,8 @@ body{
 	color:#AE00F9;
 	clear:left;
 	text-align:center;
+}
+
+.content a {
+	color:#AE00F9;
 }
