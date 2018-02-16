@@ -18,7 +18,7 @@ title = sys.argv[2].split(".")
 title = title[0]
 
 lines.insert(index+1, "<div class=\"content\">\n")
-lines.insert(index+2, "<h1>"+ title + "</h1>\n")
+lines.insert(index+2, "<h2>"+ title + "</h2>\n")
 lines.insert(index+3, "<p>" + post_text + "</p>\n")
 lines.insert(index+4, "<h6>" + str(datetime.datetime.today())[:10] + "</h6>\n")
 lines.insert(index+5, "</div>\n")
