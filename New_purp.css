@@ -43,14 +43,14 @@ html, body{
     text-align: center;
     padding: 0px;
     text-decoration: none;
-    width: 25%;
+    width: 33%;
     -webkit-transition: background 1s, color 1s;
     transition: background 1s, color 1s;
 }
 
 .nav a:hover {
-    background-color: #C179B9;
-    color: #2f242c;
+    background-color: #fff;
+    color: #7f3fff;
 }
 
 
@@ -75,24 +75,13 @@ html, body{
 	width: 95%;
 	height:auto;
 	min-height: 100px;
-	max-height: 400px;
 	margin-left: auto;
 	margin-right: auto;
-	//border: 3px solid #7f3fff;
 	vertical-align: middle;
 	transition: 2s;
 	-webkit-transition: 2s;
 	color: #EEB4B3;
 }
-
-/*.content:hover {
-	height:100%;
-	min-height: 100px;
-	max-height: 600px;
-	vertical-align:center;
-	border: 3px solid #C179B9;
-
-}*/
 
 .content h2 {
 	clear: right;
@@ -121,5 +110,5 @@ html, body{
 }
 
 .content a {
-	color:#7f3fff;
+	color:#323232;
 }
