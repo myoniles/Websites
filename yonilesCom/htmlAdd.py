@@ -3,17 +3,20 @@
 import datetime
 import sys
 import os.path
+from argparse import ArgumentParser
 
-if(len(sys.argv) == 3 and os.path.isfile(sys.argv[1]) and os.path.isfile(sys.argv[2])):
-	home = open(sys.argv[1], 'r')
-	to_post =  open(sys.argv[2])
-else:
-	print("Usage: htmlEdit.py <html> <post>")
-	quit();
+parser = ArgumentParser()
+parser.add_argument("htmlFile", help="The html file being posted to")
+parser.add_argument("postFile", help="The post file")
+parser.add_argument("-v", "--verbose", action="store_true", dest="verbose", default=False)
+parser.add_argument("-f", "--formatted", action="store_true", dest="formatted", default=False, help="The postFile is already formatted html")
+args=parser.parse_args()
 
+htmlFile = open(args.htmlFile)
+postFile = open(args.postFile)
 
-lines = home.readlines()
-post_text = to_post.read()
+lines = htmlFile.readlines()
+post_text = postFile.read()
 index = [ i for i in range(len(lines)) if ("Content Begins" in lines[i])]
 index = index[0]
 title = sys.argv[2].split(".")
@@ -25,13 +28,15 @@ lines.insert(index+3, "<p>" + post_text + "</p>\n")
 lines.insert(index+4, "<h6>" + str(datetime.datetime.today())[:10] + "</h6>\n")
 lines.insert(index+5, "</div>\n")
 
-home.close()
+htmlFile.close()
 
-home = open(sys.argv[1], 'w')
+htmlFile = open(sys.argv[1], 'w')
 
-print(lines)
+if args.verbose:
+	print(lines)
+
 for l in lines:
-	home.write(l)
+	htmlFile.write(l)
 
-home.close()
-to_post.close()
+htmlFile.close()
+postFile.close()
