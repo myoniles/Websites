@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 import datetime
 import sys
 import os.path
@@ -6,7 +8,7 @@ if(len(sys.argv) == 3 and os.path.isfile(sys.argv[1]) and os.path.isfile(sys.arg
 	home = open(sys.argv[1], 'r')
 	to_post =  open(sys.argv[2])
 else:
-	print("Usage: python3 htmlEdit.py <html> <post>")
+	print("Usage: htmlEdit.py <html> <post>")
 	quit();
 
 
