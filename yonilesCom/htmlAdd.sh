@@ -28,17 +28,20 @@ else
 	post="$2"
 fi
 
+html=${html/%"\ "/"_"}
+post=${post/%"\ "/"_"}
+
 # File type checking
 # Just check html type
-if [ ! "${post: -5}" '==' ".html" ]; then
+if [ ! "${html: -5}" '==' ".html" ]; then
 	echo "Not posting to an html file"
 	return
 fi
 
 # if text or md file, first we must pandoc it
 if [ "${post: -4}" '==' ".txt" ]; then
-	pandoc "./$post" -o "${post: -4}.html"
-	post="${post: -4}.html"
+	pandoc "./$post" -o "${post/%"txt"/"html"}"
+	post=${post/%"txt"/"html"}
 elif [ "${post: -3}" '==' ".md" ]; then
 	pandoc "./$post" -o "${post: -3}.html"
 	post="${post: -3}.html"
@@ -46,6 +49,9 @@ elif [ ! "${post: -5}" '==' ".html" ]; then
 	echo "incorrect post filetype"
 	return
 fi
+
+"./htmlAdd.py ./$html ./$post -f -t template.html -n posts/$post"
+rm "$post"
 
 echo "$html"
 echo "$post"
