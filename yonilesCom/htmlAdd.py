@@ -21,7 +21,7 @@ def getArgs():
 def get_post_text( to_post_file, formatted=False, title=None, standalone=None):
 	with open(to_post_file) as postFile:
 		lines = postFile.readlines()
-		if standalone:
+		if standalone != None:
 			lines.insert(0,"<h2> <a href=\"" + standalone + "\">"+ title + "</a></h2>\n")
 		else:
 			lines.insert(0,"<h2>"+ title + "</h2>\n")
@@ -50,7 +50,11 @@ def main():
 	title = args.title
 	if title == None:
 		title=args.postFile.split(".")[0]
-	cmdLineTitle = title.replace(" ", "_") + ".html"
+
+	if args.standalone and args.newFileName == None:
+		cmdLineTitle = "posts/"+title.replace(" ", "_") + ".html"
+	else:
+		cmdLineTitle = args.newFileName
 
 	postText = get_post_text(args.postFile, formatted = args.formatted, title=title, standalone=cmdLineTitle)
 	new_text= get_new_text(postText, args.htmlFile)
@@ -60,11 +64,12 @@ def main():
 		print(new_text)
 
 	if args.standalone:
+		postText = get_post_text(args.postFile, formatted = args.formatted, title=title)
 		new_text= get_new_text(postText, args.template)
 		if args.newFileName != None:
 			paste_to(new_text, args.newFileName)
 		else:
-			paste_to(new_text, "posts/" + cmdLineTitle)
+			paste_to(new_text, cmdLineTitle)
 	return
 
 if __name__ == "__main__":
