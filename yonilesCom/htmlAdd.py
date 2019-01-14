@@ -36,7 +36,7 @@ def main():
 	# add to posts block on blog page
 	with open('blog.html', 'r+') as blog:
 		fileTest = blog.read() # this will be fine because the blog file only grows by one line
-		to_rp= replace("<!-- Last Post Link -->","<a href ="+cmdLineTitle+ ">"+ title+ "</a>\n\t<!-- Last Post Link -->" )
+		to_rp= fileTest.replace("<!-- Last Post Link -->","<a href = posts/"+cmdLineTitle+ ">"+ title+ "</a>\n\t<!-- Last Post Link -->" )
 		blog.write(to_rp)
 
 
