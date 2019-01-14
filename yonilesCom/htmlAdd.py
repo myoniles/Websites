@@ -4,6 +4,7 @@ import datetime
 import sys
 import subprocess
 import os.path
+import os
 from argparse import ArgumentParser
 
 # Handles the arguments passed.
@@ -16,7 +17,16 @@ def getArgs():
 	return parser.parse_args()
 
 def getContent(filename):
-	return subprocess.check_output(['pandoc' ,filename]).decode('utf-8')
+	debug = subprocess.check_output(['pandoc' ,filename]).decode('utf-8')
+	print(debug)
+	return debug
+
+def update_file(filename, new_post, title):
+	with open(filename, "r+") as f:
+		fileTest = f.read() # this will be fine because the blog file only grows by one line
+		to_rp= fileTest.replace("<!-- Last Post Link -->","<a href =\""+new_post+ "\">"+ title+ "</a>\n\t<!-- Last Post Link -->" )
+		f.seek(0)
+		f.write(to_rp)
 
 def main():
 	args = getArgs()
@@ -34,10 +44,10 @@ def main():
 				newFile.write(line)
 
 	# add to posts block on blog page
-	with open('blog.html', 'r+') as blog:
-		fileTest = blog.read() # this will be fine because the blog file only grows by one line
-		to_rp= fileTest.replace("<!-- Last Post Link -->","<a href = posts/"+cmdLineTitle+ ">"+ title+ "</a>\n\t<!-- Last Post Link -->" )
-		blog.write(to_rp)
+	update_file("blog.html", "posts/"+cmdLineTitle, title)
+	for post in os.listdir("posts/"):
+		if post != cmdLineTitle:
+			update_file("posts/"+post, cmdLineTitle, title)
 
 
 if __name__ == "__main__":
