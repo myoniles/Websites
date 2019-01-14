@@ -41,6 +41,7 @@ html, body{
 
 .heading h1 {
 	border: 3px solid #7f3fff;
+	font-size: 1vw;
 }
 
 .heading p {
