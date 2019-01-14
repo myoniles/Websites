@@ -39,13 +39,15 @@ def main():
 		with open('templates/post_template.html', 'r') as t:
 			for line in t:
 				line = line.replace('<!-- Post Name -->', title)
-				line = line.replace('<!-- Last Post Link -->', "<!-- Last Post Link -->\n\t<a href ="+cmdLineTitle+ ">"+ title+ "</a>")
+				line = line.replace('<!-- Last Post Link -->', "<!-- Last Post Link -->\n\t<a href =\""+cmdLineTitle+ "\">"+ title+ "</a>")
 				line = line.replace('<!-- Content -->', getContent( args.postFile ) )
 				newFile.write(line)
 
 	# add to posts block on blog page
 	update_file("blog.html", "posts/"+cmdLineTitle, title)
+	# update the template
 	update_file("templates/post_template.html", cmdLineTitle, title)
+	# update all posts
 	for post in os.listdir("posts/"):
 		if post != cmdLineTitle:
 			update_file("posts/"+post, cmdLineTitle, title)
