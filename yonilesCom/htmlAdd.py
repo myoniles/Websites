@@ -24,7 +24,7 @@ def getContent(filename):
 def update_file(filename, new_post, title):
 	with open(filename, "r+") as f:
 		fileTest = f.read() # this will be fine because the blog file only grows by one line
-		to_rp= fileTest.replace("<!-- Last Post Link -->","<a href =\""+new_post+ "\">"+ title+ "</a>\n\t<!-- Last Post Link -->" )
+		to_rp= fileTest.replace("<!-- Last Post Link -->","<!-- Last Post Link -->\n\t<a href =\""+new_post+ "\">"+ title+ "</a>" )
 		f.seek(0)
 		f.write(to_rp)
 
@@ -39,12 +39,15 @@ def main():
 		with open('templates/post_template.html', 'r') as t:
 			for line in t:
 				line = line.replace('<!-- Post Name -->', title)
-				line = line.replace('<!-- Last Post Link -->', "<a href ="+cmdLineTitle+ ">"+ title+ "</a>\n\t<!-- Last Post Link -->")
+				line = line.replace('<!-- Last Post Link -->', "<!-- Last Post Link -->\n\t<a href =\""+cmdLineTitle+ "\">"+ title+ "</a>")
 				line = line.replace('<!-- Content -->', getContent( args.postFile ) )
 				newFile.write(line)
 
 	# add to posts block on blog page
 	update_file("blog.html", "posts/"+cmdLineTitle, title)
+	# update the template
+	update_file("templates/post_template.html", cmdLineTitle, title)
+	# update all posts
 	for post in os.listdir("posts/"):
 		if post != cmdLineTitle:
 			update_file("posts/"+post, cmdLineTitle, title)
