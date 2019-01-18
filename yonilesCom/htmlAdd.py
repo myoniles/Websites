@@ -41,6 +41,7 @@ def main():
 				line = line.replace('<!-- Post Name -->', title)
 				line = line.replace('<!-- Last Post Link -->', "<!-- Last Post Link -->\n\t<a href =\""+cmdLineTitle+ "\">"+ title+ "</a>")
 				line = line.replace('<!-- Content -->', getContent( args.postFile ) )
+				line = line.replace('<!-- Date -->', str(datetime.datetime.today())[:10] )
 				newFile.write(line)
 
 	# add to posts block on blog page
