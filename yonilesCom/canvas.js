@@ -39,9 +39,9 @@ function init_arr() {
 let p5canvas;
 function setup() {
 	var p = document.getElementById("canvasContain");
-	p5canvas = createCanvas(windowWidth, windowHeight/2);
+	p5canvas = createCanvas(windowWidth, p.clientHeight);
 	p5canvas.parent("canvasContain");
-	resizeCanvas(windowWidth, canvas.height);
+	//resizeCanvas(windowWidth, canvas.height);
 	background(bg);
 	init_arr();
 	document.documentElement.style.overflow = 'hidden';
